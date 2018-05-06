@@ -311,8 +311,8 @@ static int iwl_init_channel_map(struct device *dev, const struct iwl_cfg *cfg,
 		n_channels++;
 
 		channel->hw_value = nvm_chan[ch_idx];
-		channel->band = (ch_idx < num_2ghz_channels) ?
-				NL80211_BAND_2GHZ : NL80211_BAND_5GHZ;
+		channel->band = is_5ghz ?
+				NL80211_BAND_5GHZ : NL80211_BAND_2GHZ;
 		channel->center_freq =
 			ieee80211_channel_to_frequency(
 				channel->hw_value, channel->band);
